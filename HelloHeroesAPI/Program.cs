@@ -37,7 +37,7 @@ app.MapPost("/addhero",  (string heroName) =>
 
 app.MapGet("/searchhero", (string heroName) =>
 {
-    var h = heroesList.Contains(heroName);
+    var h = heroesList.Contains(heroName, StringComparer.OrdinalIgnoreCase);
     if (h == true)
     {
         return Results.Ok($"{heroName} found!");
