@@ -63,6 +63,22 @@ app.MapDelete("/delhero", (string heroName) =>
     }
 });
 
+
+app.MapPut("/updatehero", (string originalName, string newName) =>
+{
+    if (heroesList.Contains(originalName, StringComparer.OrdinalIgnoreCase))
+    {
+        // Removing the original name and adding the new name simulates an update.
+        heroesList.Remove(originalName);
+        heroesList.Add(newName);
+        return Results.Ok($"'{originalName}' updated to '{newName}' in the list of heroes.");
+    }
+    else
+    {
+        return Results.NotFound($"{originalName} not found in the list of heroes.");
+    }
+});
+
 app.Run();
 
 
