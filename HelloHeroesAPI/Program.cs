@@ -28,7 +28,7 @@ app.MapGet("/", () => "Hello Heroes!");
 
 app.MapGet("/getheroes", () => $"Heroes: {string.Join(", ", heroesList)}!");
 
-app.MapPost("/addhero",  (string heroName) =>
+app.MapPost("/addhero", (string heroName) =>
 {
     heroesList.Add(heroName);
     return Results.Ok($"'{heroName}' added to the list of heroes!");
@@ -46,7 +46,7 @@ app.MapGet("/searchhero", (string heroName) =>
     {
         return Results.NotFound($"{heroName} not found!");
     }
-   
+
 });
 
 
